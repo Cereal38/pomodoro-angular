@@ -30,3 +30,12 @@
 .btn-primary {
     @apply bg-blue-500 text-white;
 }
+
+.btn-tab {
+    /* @apply bg-yellow-50; */
+    @apply py-[2px] px-[12px]
+}
+
+.btn-tab[selected="true"] {
+  @apply bg-yellow-50;
+}
