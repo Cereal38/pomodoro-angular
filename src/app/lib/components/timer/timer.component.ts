@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-timer',
@@ -12,7 +12,7 @@ export class TimerComponent implements OnInit {
     public readonly shortBreakMode: number = 1;
     public readonly longBreakMode: number = 2;
 
-    private _timer!: ReturnType<typeof setInterval> | null;
+    private _timer: ReturnType<typeof setInterval> | null = null;
 
     mode!: number;
     time!: number; // In seconds
@@ -32,6 +32,8 @@ export class TimerComponent implements OnInit {
         return `${Math.floor(this.time / 60)}:${String(this.time % 60).padStart(2, '0')}`;
     }
 
+    // Pause and play timer and space press
+    @HostListener('document:keypress', ['$event'])
     handleStart(): void {
         if (!this._timer) {
             this._timer = setInterval(() => {
@@ -42,5 +44,9 @@ export class TimerComponent implements OnInit {
             clearInterval(this._timer);
             this._timer = null;
         }
+    }
+
+    get isTimerRunning(): boolean {
+        return this._timer !== null;
     }
 }
