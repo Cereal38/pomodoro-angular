@@ -13,3 +13,9 @@
 /* utilities */
 @import './tailwindcss/utilities.css';
 @import './03-utilities/border.css';
+
+/* fonts */
+@font-face {
+  font-family: 'ArialRounded';
+  src: url('../assets/fonts/arlrdbd.ttf') format('truetype');
+}
