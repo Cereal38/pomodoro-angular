@@ -12,7 +12,7 @@ export class TimerComponent implements OnInit {
     public readonly shortBreakMode: number = 1;
     public readonly longBreakMode: number = 2;
 
-    private _timer!: any;
+    private _timer!: ReturnType<typeof setInterval> | null;
 
     mode!: number;
     time!: number; // In seconds
