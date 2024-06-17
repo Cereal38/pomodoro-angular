@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*", "cypress/support/component.d.ts"],
+  "ignorePatterns": ["projects/**/*", "cypress/support/component.d.ts", "dist/**/*"],
   "overrides": [
     {
       "files": ["*.ts"],

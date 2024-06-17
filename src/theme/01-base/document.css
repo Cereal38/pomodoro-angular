@@ -8,6 +8,11 @@ body {
     @apply text-slate-900;
 }
 
+body.focus {
+    @apply bg-[#BA4949];
+    @apply text-white;
+}
+
 body.dark {
     @apply bg-zinc-900;
     @apply text-zinc-200;
