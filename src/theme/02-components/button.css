@@ -32,10 +32,18 @@
 }
 
 .btn-tab {
-    /* @apply bg-yellow-50; */
-    @apply py-[2px] px-[12px]
+    @apply py-[2px] px-[12px];
+    @apply rounded-md
 }
 
 .btn-tab[selected="true"] {
-  @apply bg-yellow-50;
+  @apply bg-[#A44E4E];
+}
+
+.btn-main {
+  @apply bg-white;
+  @apply text-[22px] text-[#BA4949];
+  @apply rounded-md;
+  @apply h-[55px];
+  box-shadow: rgb(235, 235, 235) 0px 6px 0px
 }
