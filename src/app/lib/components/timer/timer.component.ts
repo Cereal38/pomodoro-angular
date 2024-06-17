@@ -34,6 +34,12 @@ export class TimerComponent implements OnInit {
 
     // Pause and play timer and space press
     @HostListener('document:keypress', ['$event'])
+    handleKeyDown(event: KeyboardEvent): void {
+        if (event.code == 'Space') {
+            this.handleStart();
+        }
+    }
+
     handleStart(): void {
         if (!this._timer) {
             this._timer = setInterval(() => {
