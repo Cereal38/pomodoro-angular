@@ -47,3 +47,8 @@
   @apply h-[55px];
   box-shadow: rgb(235, 235, 235) 0px 6px 0px
 }
+
+.btn-main:active {
+  @apply translate-y-[6px];
+  box-shadow: none;
+}
