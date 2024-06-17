@@ -1,9 +1,11 @@
 <div class="w-[480px] h-[313px] bg-[#C15C5C] rounded-md flex flex-col justify-between items-center pt-[20px] pb-[30px]">
   <!-- Select menu -->
   <div class="flex flex-row">
-    <button class="btn-tab" selected="true">Focus</button>
-    <button class="btn-tab" selected="false">Short break</button>
-    <button class="btn-tab" selected="false">Long break</button>
+    <button class="btn-tab" selected="mode === focusMode" (click)="handleModeChange(focusMode)">Focus</button>
+    <button class="btn-tab" selected="mode === shortBreakMode" (click)="handleModeChange(shortBreakMode)">Short
+      break</button>
+    <button class="btn-tab" selected="mode === longBeakMode" (click)="handleModeChange(longBreakMode)">Long
+      break</button>
   </div>
 
   <p class="text-[120px]">25:00</p>

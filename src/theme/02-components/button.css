@@ -33,7 +33,7 @@
 
 .btn-tab {
     @apply py-[2px] px-[12px];
-    @apply rounded-md
+    @apply rounded-md;
 }
 
 .btn-tab[selected="true"] {
