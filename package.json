@@ -19,10 +19,7 @@
     "stylelint:fix": "stylelint **/*.{css,pcss,less,scss,sass} --quiet-deprecation-warnings --fix",
     "format": "prettier --write ."
   },
-  "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged",
-    "pre-push": "pnpm build"
-  },
+  "simple-git-hooks": {},
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "pnpm lint:fix",
