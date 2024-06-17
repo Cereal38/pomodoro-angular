@@ -22,7 +22,11 @@ export default {
             center: true,
             padding: '1.5rem',
         },
-        extend: {},
+        extend: {
+            boxShadow: {
+                under: 'inset 0 -1px 0px rgba(0, 0, 0, 0.1)',
+            },
+        },
     },
     plugins: [...TAILWIND_PLUGINS, ...CUSTOM_PLUGINS],
 };
