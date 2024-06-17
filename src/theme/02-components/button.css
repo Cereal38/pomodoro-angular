@@ -30,3 +30,29 @@
 .btn-primary {
     @apply bg-blue-500 text-white;
 }
+
+.btn-tab {
+    @apply py-[2px] px-[12px];
+    @apply rounded-md;
+}
+
+.btn-tab:active {
+  @apply translate-y-[2px];
+}
+
+.btn-tab-selected {
+  @apply bg-[#A44E4E];
+}
+
+.btn-main {
+  @apply bg-white;
+  @apply text-[22px] text-[#BA4949];
+  @apply rounded-md;
+  @apply h-[55px];
+  box-shadow: rgb(235, 235, 235) 0px 6px 0px
+}
+
+.btn-main:active, .btn-main-active {
+  @apply translate-y-[6px];
+  box-shadow: none;
+}

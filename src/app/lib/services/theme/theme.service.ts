@@ -59,6 +59,7 @@ export class ThemeService implements OnDestroy {
         if (theme === 'system') {
             bodyClass = this.systemTheme;
         }
+        console.log('Theme new : ', bodyClass);
         this._document.body.classList.add(bodyClass);
     }
 
@@ -85,6 +86,6 @@ export class ThemeService implements OnDestroy {
      *
      */
     private _clearThemes(): void {
-        this._document.body.classList.remove('system', 'light', 'dark');
+        this._document.body.classList.remove('system', 'light', 'dark', 'focus');
     }
 }

@@ -1,11 +1,17 @@
 html,
 body {
+    font-family: 'ArialRounded', sans-serif;
     @apply h-full;
 }
 
 body {
     @apply bg-slate-100;
     @apply text-slate-900;
+}
+
+body.focus {
+    @apply bg-[#BA4949];
+    @apply text-white;
 }
 
 body.dark {

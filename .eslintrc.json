@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "ignorePatterns": ["projects/**/*", "cypress/support/component.d.ts", "dist/**/*"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -37,6 +37,8 @@
         "@typescript-eslint/no-unused-vars": "error",
         "@typescript-eslint/explicit-function-return-type": "error",
         "@typescript-eslint/no-explicit-any": "error",
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-argument": "off",
         "@typescript-eslint/naming-convention": [
           "error",
           {
