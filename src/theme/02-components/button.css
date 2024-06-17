@@ -36,6 +36,10 @@
     @apply rounded-md;
 }
 
+.btn-tab:active {
+  @apply translate-y-[2px];
+}
+
 .btn-tab-selected {
   @apply bg-[#A44E4E];
 }
