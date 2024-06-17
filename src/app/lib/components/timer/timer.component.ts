@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-timer',
@@ -7,20 +7,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     templateUrl: './timer.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TimerComponent {
+export class TimerComponent implements OnInit {
     // Constants
     public readonly focusMode: number = 0;
     public readonly shortBreakMode: number = 1;
     public readonly longBreakMode: number = 2;
 
-    private _mode: number = this.focusMode;
+    mode!: number;
+
+    // Init mode on mount
+    ngOnInit(): void {
+        this.mode = this.focusMode;
+    }
 
     handleModeChange(mode: number): void {
         console.log('Theme changed to : ', mode);
-        this._mode = mode;
-    }
-
-    get mode(): number {
-        return this._mode;
+        this.mode = mode;
     }
 }

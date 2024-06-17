@@ -1,10 +1,13 @@
 <div class="w-[480px] h-[313px] bg-[#C15C5C] rounded-md flex flex-col justify-between items-center pt-[20px] pb-[30px]">
   <!-- Select menu -->
   <div class="flex flex-row">
-    <button class="btn-tab" selected="mode === focusMode" (click)="handleModeChange(focusMode)">Focus</button>
-    <button class="btn-tab" selected="mode === shortBreakMode" (click)="handleModeChange(shortBreakMode)">Short
+    <button class="btn-tab {{ mode === focusMode && 'btn-tab-selected' }}"
+      (click)="handleModeChange(focusMode)">Focus</button>
+    <button class="btn-tab {{ mode === shortBreakMode && 'btn-tab-selected' }}"
+      (click)="handleModeChange(shortBreakMode)">Short
       break</button>
-    <button class="btn-tab" selected="mode === longBeakMode" (click)="handleModeChange(longBreakMode)">Long
+    <button class="btn-tab {{ mode === longBreakMode && 'btn-tab-selected' }}"
+      (click)="handleModeChange(longBreakMode)">Long
       break</button>
   </div>
 
