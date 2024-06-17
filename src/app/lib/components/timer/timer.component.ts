@@ -14,14 +14,20 @@ export class TimerComponent implements OnInit {
     public readonly longBreakMode: number = 2;
 
     mode!: number;
+    time!: number; // In seconds
 
     // Init mode on mount
     ngOnInit(): void {
         this.mode = this.focusMode;
+        this.time = 25 * 60;
     }
 
     handleModeChange(mode: number): void {
         console.log('Theme changed to : ', mode);
         this.mode = mode;
+    }
+
+    get formattedTime(): string {
+        return `${Math.floor(this.time / 60)}:${String(this.time % 60).padStart(2, '0')}`;
     }
 }
