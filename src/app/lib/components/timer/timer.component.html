@@ -13,7 +13,9 @@
 
   <p class="text-[120px] font-bold">{{formattedTime}}</p>
 
-  <button class="btn-main w-[200px] {{ isTimerRunning && 'btn-main-active' }}" (click)="handleStart()">{{
+  <button class="btn btn-main w-[200px] {{ isTimerRunning && 'btn-main-active' }} font-extrabold"
+    (click)="handleStart()">
+    {{
     isTimerRunning
     ? 'PAUSE' : 'START'
     }}</button>
