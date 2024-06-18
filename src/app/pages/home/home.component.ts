@@ -1,14 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ProgressBarComponent } from '@lib/components/progress-bar/progress-bar.component';
 import { TimerComponent } from '@lib/components/timer/timer.component';
 import { AppTheme, ThemeService } from '@lib/services/theme';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, RouterModule, ProgressBarComponent, TimerComponent],
+    imports: [CommonModule, RouterModule, TimerComponent],
     templateUrl: './home.component.html',
 })
 export class HomeComponent implements OnInit, OnDestroy {

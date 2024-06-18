@@ -5,7 +5,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class TimerService {
-    private _time = new BehaviorSubject<number>(25 * 60);
+    // private _time = new BehaviorSubject<number>(25 * 60);
+    private _time = new BehaviorSubject<number>(10);
     time$: Observable<number> = this._time.asObservable();
 
     private _timer: ReturnType<typeof setInterval> | null = null;
