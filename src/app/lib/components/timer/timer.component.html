@@ -15,8 +15,8 @@
 
     <p class="text-[120px] font-bold">{{formattedTime}}</p>
 
-    <button class="btn btn-main w-[200px] {{ timerService.isTimerRunning() && 'btn-main-active' }} font-extrabold"
-      (click)="timerService.toggleTimer()">
+    <button class="btn btn-main w-[200px] {{ timerService.isTimerRunning() && 'btn-main-active' }}"
+      [ngStyle]="{'color': themeService.primaryBg$ | async}" (click)="timerService.toggleTimer()">
       {{
       timerService.isTimerRunning()
       ? 'PAUSE' : 'START'

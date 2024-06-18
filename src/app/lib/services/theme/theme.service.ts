@@ -89,6 +89,22 @@ export class ThemeService implements OnDestroy {
         this._document.body.classList.remove('system', 'light', 'dark', 'focus', 'short-break', 'long-break');
     }
 
+    primaryBg$ = this.currentTheme$.pipe(
+        map((theme) => {
+            switch (theme) {
+                case 'focus':
+                    return '#BA4949';
+                case 'short-break':
+                    return '#38858A';
+                case 'long-break':
+                    return '#397097';
+                default:
+                    return '';
+            }
+        }),
+        distinctUntilChanged(),
+    );
+
     primaryBgClass$ = this.currentTheme$.pipe(
         map((theme) => {
             switch (theme) {
