@@ -24,7 +24,7 @@
   </div>
 
   <div class="flex flex-col items-center">
-    <span class="text-[16px] opacity-70">#1</span>
+    <span class="text-[16px] opacity-70">#{{ timerService.getCycles() }}</span>
     <span class="text-[18px]">{{
       timerService.getMode() === timerService.focusMode ? "Time to focus!" : "Time for a break"
       }}</span>
