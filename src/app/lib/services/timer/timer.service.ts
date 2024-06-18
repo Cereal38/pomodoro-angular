@@ -11,7 +11,12 @@ export class TimerService {
     public readonly shortBreakMode: string = 'short-break';
     public readonly longBreakMode: string = 'long-break';
 
-    private _baseTime = new BehaviorSubject<number>(120);
+    // public readonly focusDuration: number = 60 * 25;
+    public readonly focusDuration: number = 5;
+    public readonly shortBreakDuration: number = 60 * 5;
+    public readonly longBreakDuration: number = 60 * 15;
+
+    private _baseTime = new BehaviorSubject<number>(this.focusDuration);
     private _time = new BehaviorSubject<number>(this._baseTime.getValue());
     private _mode = new BehaviorSubject<string>(this.focusMode);
     baseTime$: Observable<number> = this._baseTime.asObservable();
@@ -52,6 +57,11 @@ export class TimerService {
             this._timer = setInterval(() => {
                 if (this._time.getValue() != 0) {
                     this._time.next(this._time.getValue() - 1);
+                } else {
+                    this._mode.next(this.shortBreakMode);
+                    this._time.next(this.shortBreakDuration);
+                    clearInterval(this._timer as ReturnType<typeof setInterval>);
+                    this._timer = null;
                 }
             }, 1000);
         } else {
