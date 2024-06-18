@@ -56,9 +56,11 @@ export class TimerService {
         if (!this._timer) {
             this._timer = setInterval(() => {
                 if (this._time.getValue() != 0) {
+                    // Descrease timer every seconds
                     this._time.next(this._time.getValue() - 1);
                 } else {
-                    this._mode.next(this.shortBreakMode);
+                    // Clear timer and change mode when reaching 0
+                    this.setMode(this.shortBreakMode);
                     this._time.next(this.shortBreakDuration);
                     clearInterval(this._timer as ReturnType<typeof setInterval>);
                     this._timer = null;
