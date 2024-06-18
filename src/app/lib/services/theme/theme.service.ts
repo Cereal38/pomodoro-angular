@@ -3,7 +3,7 @@ import { Injectable, OnDestroy, inject } from '@angular/core';
 import { DEFAULT_BASE_THEME } from '@lib/constants';
 import { storage } from '@lib/utils';
 import { BehaviorSubject, Subject, fromEventPattern } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
 import { AppTheme } from './theme.config';
 
 @Injectable({
@@ -88,4 +88,20 @@ export class ThemeService implements OnDestroy {
     private _clearThemes(): void {
         this._document.body.classList.remove('system', 'light', 'dark', 'focus', 'short-break', 'long-break');
     }
+
+    secondaryBgClass$ = this.currentTheme$.pipe(
+        map((theme) => {
+            switch (theme) {
+                case 'focus':
+                    return 'bg-secondary-focus';
+                case 'short-break':
+                    return 'bg-secondary-short-break';
+                case 'long-break':
+                    return 'bg-secondary-long-break';
+                default:
+                    return '';
+            }
+        }),
+        distinctUntilChanged(),
+    );
 }

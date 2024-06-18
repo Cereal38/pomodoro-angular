@@ -24,7 +24,7 @@
 }
 
 .btn-secondary {
-    @apply bg-[#C86D6D] text-white;
+    @apply text-white;
     @apply py-[8px] px-[12px];
 }
 
