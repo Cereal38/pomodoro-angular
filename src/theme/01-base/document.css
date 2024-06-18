@@ -25,6 +25,18 @@ body.dark {
     @apply bg-[#BA4949];
 }
 
+.bg-primary-focus {
+  @apply bg-[#BA4949]
+}
+
+.bg-primary-short-break {
+@apply bg-[#38858A]
+}
+
+.bg-primary-long-break {
+@apply bg-[#397097]
+}
+
 .bg-secondary-focus {
     @apply bg-[#C15C5C]
 }
@@ -35,4 +47,16 @@ body.dark {
 
 .bg-secondary-long-break {
   @apply bg-[#4D7FA2]
+}
+
+.bg-tertiary-focus {
+  @apply bg-[#A44E4E]
+}
+
+.bg-tertiary-short-break {
+@apply bg-[#417B80]
+}
+
+.bg-tertiary-long-break {
+@apply bg-[#426C8A]
 }

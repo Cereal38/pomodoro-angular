@@ -42,7 +42,7 @@
 }
 
 .btn-tab-selected {
-  @apply bg-[#A44E4E];
+  @apply bg-blend-darken;
 }
 
 .btn-main {

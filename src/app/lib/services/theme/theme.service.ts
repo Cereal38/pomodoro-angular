@@ -89,6 +89,22 @@ export class ThemeService implements OnDestroy {
         this._document.body.classList.remove('system', 'light', 'dark', 'focus', 'short-break', 'long-break');
     }
 
+    primaryBgClass$ = this.currentTheme$.pipe(
+        map((theme) => {
+            switch (theme) {
+                case 'focus':
+                    return 'bg-primary-focus';
+                case 'short-break':
+                    return 'bg-primary-short-break';
+                case 'long-break':
+                    return 'bg-primary-long-break';
+                default:
+                    return '';
+            }
+        }),
+        distinctUntilChanged(),
+    );
+
     secondaryBgClass$ = this.currentTheme$.pipe(
         map((theme) => {
             switch (theme) {
@@ -98,6 +114,22 @@ export class ThemeService implements OnDestroy {
                     return 'bg-secondary-short-break';
                 case 'long-break':
                     return 'bg-secondary-long-break';
+                default:
+                    return '';
+            }
+        }),
+        distinctUntilChanged(),
+    );
+
+    tertiaryBgClass$ = this.currentTheme$.pipe(
+        map((theme) => {
+            switch (theme) {
+                case 'focus':
+                    return 'bg-tertiary-focus';
+                case 'short-break':
+                    return 'bg-tertiary-short-break';
+                case 'long-break':
+                    return 'bg-tertiary-long-break';
                 default:
                     return '';
             }

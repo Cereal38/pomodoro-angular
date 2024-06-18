@@ -3,12 +3,12 @@
     class="w-[480px] h-[313px] rounded-md flex flex-col justify-between items-center pt-[20px] pb-[30px] mb-[20px] {{ themeService.secondaryBgClass$ | async }}">
     <!-- Select menu -->
     <div class="flex flex-row">
-      <button class="btn-tab {{ mode === focusMode && 'btn-tab-selected' }}"
+      <button class="btn-tab {{ mode === focusMode && (themeService.tertiaryBgClass$ | async) }}"
         (click)="handleModeChange(focusMode)">Focus</button>
-      <button class="btn-tab {{ mode === shortBreakMode && 'btn-tab-selected' }}"
+      <button class="btn-tab {{ mode === shortBreakMode && (themeService.tertiaryBgClass$ | async) }}"
         (click)="handleModeChange(shortBreakMode)">Short
         break</button>
-      <button class="btn-tab {{ mode === longBreakMode && 'btn-tab-selected' }}"
+      <button class="btn-tab {{ mode === longBreakMode && (themeService.tertiaryBgClass$ | async) }}"
         (click)="handleModeChange(longBreakMode)">Long
         break</button>
     </div>
