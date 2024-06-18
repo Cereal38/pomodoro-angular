@@ -86,6 +86,6 @@ export class ThemeService implements OnDestroy {
      *
      */
     private _clearThemes(): void {
-        this._document.body.classList.remove('system', 'light', 'dark', 'focus');
+        this._document.body.classList.remove('system', 'light', 'dark', 'focus', 'short-break', 'long-break');
     }
 }

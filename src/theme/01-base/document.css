@@ -11,10 +11,16 @@ body {
 
 body.focus {
     @apply bg-[#BA4949];
-    @apply text-white;
+}
+
+body.short-break {
+    @apply bg-[#38858A];
+}
+
+body.long-break {
+  @apply bg-[#397097];
 }
 
 body.dark {
     @apply bg-[#BA4949];
-    @apply text-white;
 }

@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ThemeService } from '@lib/services';
 import { TimerService } from '@lib/services/timer/timer.service';
 
 @Component({
@@ -16,7 +17,7 @@ export class TimerComponent implements OnInit {
     mode!: number;
     time!: number; // In seconds
 
-    constructor(private _timerService: TimerService) {}
+    constructor(private _timerService: TimerService, private _themeService: ThemeService) {}
 
     // Init mode on mount
     ngOnInit(): void {
@@ -29,7 +30,19 @@ export class TimerComponent implements OnInit {
     }
 
     handleModeChange(mode: number): void {
-        console.log('Theme changed to : ', mode);
+        console.log('Mode changed to : ', mode);
+        switch (mode) {
+            case this.focusMode:
+                this._themeService.setTheme('focus');
+                break;
+            case this.shortBreakMode:
+                this._themeService.setTheme('short-break');
+                break;
+            case this.longBreakMode:
+                this._themeService.setTheme('long-break');
+                break;
+        }
+
         this.mode = mode;
     }
 
