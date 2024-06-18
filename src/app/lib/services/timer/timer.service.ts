@@ -11,12 +11,9 @@ export class TimerService {
     public readonly shortBreakMode: string = 'short-break';
     public readonly longBreakMode: string = 'long-break';
 
-    // public readonly focusDuration: number = 60 * 25;
-    // public readonly shortBreakDuration: number = 60 * 5;
-    // public readonly longBreakDuration: number = 60 * 15;
-    public readonly focusDuration: number = 2;
-    public readonly shortBreakDuration: number = 3;
-    public readonly longBreakDuration: number = 4;
+    public readonly focusDuration: number = 60 * 25;
+    public readonly shortBreakDuration: number = 60 * 5;
+    public readonly longBreakDuration: number = 60 * 15;
 
     private _baseTime = new BehaviorSubject<number>(this.focusDuration);
     private _time = new BehaviorSubject<number>(this._baseTime.getValue());
@@ -50,6 +47,22 @@ export class TimerService {
     setMode(m: string): void {
         this._mode.next(m);
         this._themeService.setTheme(m as AppTheme);
+        clearInterval(this._timer as ReturnType<typeof setInterval>);
+        this._timer = null;
+        switch (m) {
+            case this.focusMode:
+                this.setTime(this.focusDuration);
+                this.setBaseTime(this.focusDuration);
+                break;
+            case this.shortBreakMode:
+                this.setTime(this.shortBreakDuration);
+                this.setBaseTime(this.shortBreakDuration);
+                break;
+            case this.longBreakMode:
+                this.setTime(this.longBreakDuration);
+                this.setBaseTime(this.longBreakDuration);
+                break;
+        }
     }
 
     getMode(): string {
