@@ -1,7 +1,7 @@
 .btn {
     @apply w-full md:w-auto;
-    @apply border border-transparent rounded-lg outline-none;
-    @apply h-10 min-w-[80px] py-2 px-3;
+    @apply border border-transparent rounded-md outline-none;
+    @apply py-2 px-3;
     @apply relative inline-flex items-center justify-center;
     @apply text-sm text-center font-medium leading-none;
     @apply select-none cursor-pointer;
@@ -24,7 +24,8 @@
 }
 
 .btn-secondary {
-    @apply bg-zinc-200 text-zinc-900 dark:bg-zinc-700 dark:text-white;
+    @apply bg-[#C86D6D] text-white;
+    @apply py-[8px] px-[12px];
 }
 
 .btn-primary {
@@ -49,6 +50,7 @@
   @apply text-[22px] text-[#BA4949];
   @apply rounded-md;
   @apply h-[55px];
+  @apply min-w-[80px];
   box-shadow: rgb(235, 235, 235) 0px 6px 0px
 }
 
