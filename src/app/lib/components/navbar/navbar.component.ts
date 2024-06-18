@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
     private readonly _authService = inject(AuthService);
 
     time!: number;
+    baseTime!: number;
 
     constructor(private _timerService: TimerService, private _cdr: ChangeDetectorRef) {}
 
@@ -25,6 +26,10 @@ export class NavbarComponent implements OnInit {
         this._timerService.time$.subscribe((t) => {
             this.time = t;
             this._cdr.detectChanges(); // Trigger changes on the interface
+        });
+        this._timerService.baseTime$.subscribe((t) => {
+            this.baseTime = t;
+            this._cdr.detectChanges();
         });
     }
 

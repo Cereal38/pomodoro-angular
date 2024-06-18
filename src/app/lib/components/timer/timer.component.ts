@@ -21,7 +21,6 @@ export class TimerComponent implements OnInit {
     // Init mode on mount
     ngOnInit(): void {
         this.mode = this.focusMode;
-        this.time = 25 * 60;
 
         // Subscribe to the timer service
         this._timerService.time$.subscribe((t) => {

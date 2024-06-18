@@ -5,8 +5,9 @@ import { BehaviorSubject, Observable } from 'rxjs';
     providedIn: 'root',
 })
 export class TimerService {
-    // private _time = new BehaviorSubject<number>(25 * 60);
-    private _time = new BehaviorSubject<number>(10);
+    private _baseTime = new BehaviorSubject<number>(120);
+    private _time = new BehaviorSubject<number>(this._baseTime.getValue());
+    baseTime$: Observable<number> = this._baseTime.asObservable();
     time$: Observable<number> = this._time.asObservable();
 
     private _timer: ReturnType<typeof setInterval> | null = null;
@@ -19,8 +20,15 @@ export class TimerService {
         return this._time.getValue();
     }
 
+    setBaseTime(t: number): void {
+        this._baseTime.next(t);
+    }
+
+    getBaseTime(): number {
+        return this._baseTime.getValue();
+    }
+
     toggleTimer(): void {
-        console.log('TOGGLE');
         if (!this._timer) {
             this._timer = setInterval(() => {
                 if (this._time.getValue() != 0) {
