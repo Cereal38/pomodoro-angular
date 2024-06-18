@@ -5,16 +5,58 @@ body {
 }
 
 body {
-    @apply bg-slate-100;
-    @apply text-slate-900;
-}
-
-body.focus {
     @apply bg-[#BA4949];
     @apply text-white;
 }
 
+body.focus {
+    @apply bg-[#BA4949];
+}
+
+body.short-break {
+    @apply bg-[#38858A];
+}
+
+body.long-break {
+  @apply bg-[#397097];
+}
+
 body.dark {
-    @apply bg-zinc-900;
-    @apply text-zinc-200;
+    @apply bg-[#BA4949];
+}
+
+.bg-primary-focus {
+  @apply bg-[#BA4949]
+}
+
+.bg-primary-short-break {
+@apply bg-[#38858A]
+}
+
+.bg-primary-long-break {
+@apply bg-[#397097]
+}
+
+.bg-secondary-focus {
+    @apply bg-[#C15C5C]
+}
+
+.bg-secondary-short-break {
+  @apply bg-[#4C9196]
+}
+
+.bg-secondary-long-break {
+  @apply bg-[#4D7FA2]
+}
+
+.bg-tertiary-focus {
+  @apply bg-[#A44E4E]
+}
+
+.bg-tertiary-short-break {
+@apply bg-[#417B80]
+}
+
+.bg-tertiary-long-break {
+@apply bg-[#426C8A]
 }

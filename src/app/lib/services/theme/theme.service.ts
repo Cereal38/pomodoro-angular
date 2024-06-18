@@ -3,7 +3,7 @@ import { Injectable, OnDestroy, inject } from '@angular/core';
 import { DEFAULT_BASE_THEME } from '@lib/constants';
 import { storage } from '@lib/utils';
 import { BehaviorSubject, Subject, fromEventPattern } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
 import { AppTheme } from './theme.config';
 
 @Injectable({
@@ -86,6 +86,70 @@ export class ThemeService implements OnDestroy {
      *
      */
     private _clearThemes(): void {
-        this._document.body.classList.remove('system', 'light', 'dark', 'focus');
+        this._document.body.classList.remove('system', 'light', 'dark', 'focus', 'short-break', 'long-break');
     }
+
+    primaryBg$ = this.currentTheme$.pipe(
+        map((theme) => {
+            switch (theme) {
+                case 'focus':
+                    return '#BA4949';
+                case 'short-break':
+                    return '#38858A';
+                case 'long-break':
+                    return '#397097';
+                default:
+                    return '';
+            }
+        }),
+        distinctUntilChanged(),
+    );
+
+    primaryBgClass$ = this.currentTheme$.pipe(
+        map((theme) => {
+            switch (theme) {
+                case 'focus':
+                    return 'bg-primary-focus';
+                case 'short-break':
+                    return 'bg-primary-short-break';
+                case 'long-break':
+                    return 'bg-primary-long-break';
+                default:
+                    return '';
+            }
+        }),
+        distinctUntilChanged(),
+    );
+
+    secondaryBgClass$ = this.currentTheme$.pipe(
+        map((theme) => {
+            switch (theme) {
+                case 'focus':
+                    return 'bg-secondary-focus';
+                case 'short-break':
+                    return 'bg-secondary-short-break';
+                case 'long-break':
+                    return 'bg-secondary-long-break';
+                default:
+                    return '';
+            }
+        }),
+        distinctUntilChanged(),
+    );
+
+    tertiaryBgClass$ = this.currentTheme$.pipe(
+        map((theme) => {
+            switch (theme) {
+                case 'focus':
+                    return 'bg-tertiary-focus';
+                case 'short-break':
+                    return 'bg-tertiary-short-break';
+                case 'long-break':
+                    return 'bg-tertiary-long-break';
+                default:
+                    return '';
+            }
+        }),
+        distinctUntilChanged(),
+    );
 }

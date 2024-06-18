@@ -1,19 +1,42 @@
-<div class="w-[480px] h-[313px] bg-[#C15C5C] rounded-md flex flex-col justify-between items-center pt-[20px] pb-[30px]">
-  <!-- Select menu -->
-  <div class="flex flex-row">
-    <button class="btn-tab {{ mode === focusMode && 'btn-tab-selected' }}"
-      (click)="handleModeChange(focusMode)">Focus</button>
-    <button class="btn-tab {{ mode === shortBreakMode && 'btn-tab-selected' }}"
-      (click)="handleModeChange(shortBreakMode)">Short
-      break</button>
-    <button class="btn-tab {{ mode === longBreakMode && 'btn-tab-selected' }}"
-      (click)="handleModeChange(longBreakMode)">Long
-      break</button>
+<div class="flex flex-col items-center">
+  <div
+    class="w-[480px] h-[313px] rounded-md flex flex-col justify-between items-center pt-[20px] pb-[30px] mb-[20px] {{ themeService.secondaryBgClass$ | async }}">
+    <!-- Select menu -->
+    <div class="flex flex-row">
+      <button class="btn-tab {{ mode === timerService.focusMode && (themeService.tertiaryBgClass$ | async) }}"
+        (click)="timerService.setMode(timerService.focusMode)">Focus</button>
+      <button class="btn-tab {{ mode === timerService.shortBreakMode && (themeService.tertiaryBgClass$ | async) }}"
+        (click)="timerService.setMode(timerService.shortBreakMode)">Short
+        break</button>
+      <button class="btn-tab {{ mode === timerService.longBreakMode && (themeService.tertiaryBgClass$ | async) }}"
+        (click)="timerService.setMode(timerService.longBreakMode)">Long
+        break</button>
+    </div>
+
+    <p class="text-[120px] font-bold">{{formattedTime}}</p>
+
+    <div class="flex flex-row justify-end items-center relative">
+      <button class="btn btn-main w-[200px] {{ timerService.isTimerRunning() && 'btn-main-active' }}"
+        [ngStyle]="{'color': themeService.primaryBg$ | async}" (click)="timerService.toggleTimer()">
+        {{
+        timerService.isTimerRunning()
+        ? 'PAUSE' : 'START'
+        }}</button>
+
+      <button class="absolute translate-x-[85px] hover:opacity-80 {{ !timerService.isTimerRunning() && 'hidden' }}"
+        (click)="timerService.skipTimer()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24">
+          <path fill="currentColor"
+            d="M16.5 17V7q0-.425.288-.712T17.5 6t.713.288T18.5 7v10q0 .425-.288.713T17.5 18t-.712-.288T16.5 17m-11-.875v-8.25q0-.45.3-.725t.7-.275q.125 0 .275.025t.275.125l6.2 4.15q.225.15.338.363T13.7 12t-.112.463t-.338.362l-6.2 4.15q-.125.1-.275.125t-.275.025q-.4 0-.7-.275t-.3-.725" />
+        </svg>
+      </button>
+    </div>
   </div>
 
-  <p class="text-[120px]">{{formattedTime}}</p>
-
-  <button class="btn-main w-[200px] {{ isTimerRunning && 'btn-main-active' }}" (click)="handleStart()">{{ isTimerRunning
-    ? 'PAUSE' : 'START'
-    }}</button>
+  <div class="flex flex-col items-center">
+    <span class="text-[16px] opacity-70">#{{ timerService.getCycles() }}</span>
+    <span class="text-[18px]">{{
+      timerService.getMode() === timerService.focusMode ? "Time to focus!" : "Time for a break"
+      }}</span>
+  </div>
 </div>

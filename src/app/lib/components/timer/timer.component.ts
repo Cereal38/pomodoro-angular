@@ -1,58 +1,43 @@
+import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AppTheme, ThemeService } from '@lib/services/theme';
+import { TimerService } from '@lib/services/timer/timer.service';
 
 @Component({
     selector: 'app-timer',
     standalone: true,
-    imports: [],
+    imports: [CommonModule],
     templateUrl: './timer.component.html',
 })
 export class TimerComponent implements OnInit {
-    // Constants
-    public readonly focusMode: number = 0;
-    public readonly shortBreakMode: number = 1;
-    public readonly longBreakMode: number = 2;
+    currentTheme!: AppTheme | null;
 
-    private _timer: ReturnType<typeof setInterval> | null = null;
-
-    mode!: number;
+    mode!: string;
     time!: number; // In seconds
+
+    constructor(public timerService: TimerService, public themeService: ThemeService) {}
 
     // Init mode on mount
     ngOnInit(): void {
-        this.mode = this.focusMode;
-        this.time = 25 * 60;
-    }
+        // Subscribe to the timer service
+        this.timerService.time$.subscribe((t) => {
+            this.time = t;
+        });
 
-    handleModeChange(mode: number): void {
-        console.log('Theme changed to : ', mode);
-        this.mode = mode;
+        this.timerService.mode$.subscribe((m) => {
+            this.mode = m;
+        });
     }
 
     get formattedTime(): string {
-        return `${Math.floor(this.time / 60)}:${String(this.time % 60).padStart(2, '0')}`;
+        return `${String(Math.floor(this.time / 60)).padStart(2, '0')}:${String(this.time % 60).padStart(2, '0')}`;
     }
 
     // Pause and play timer and space press
     @HostListener('document:keypress', ['$event'])
     handleKeyDown(event: KeyboardEvent): void {
         if (event.code == 'Space') {
-            this.handleStart();
+            this.timerService.toggleTimer();
         }
-    }
-
-    handleStart(): void {
-        if (!this._timer) {
-            this._timer = setInterval(() => {
-                console.log('HELLLO');
-                this.time--;
-            }, 1000);
-        } else {
-            clearInterval(this._timer);
-            this._timer = null;
-        }
-    }
-
-    get isTimerRunning(): boolean {
-        return this._timer !== null;
     }
 }
