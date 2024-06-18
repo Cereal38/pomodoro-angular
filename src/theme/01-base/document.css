@@ -5,8 +5,8 @@ body {
 }
 
 body {
-    @apply bg-slate-100;
-    @apply text-slate-900;
+    @apply bg-[#BA4949];
+    @apply text-white;
 }
 
 body.focus {
@@ -15,6 +15,6 @@ body.focus {
 }
 
 body.dark {
-    @apply bg-zinc-900;
-    @apply text-zinc-200;
+    @apply bg-[#BA4949];
+    @apply text-white;
 }
