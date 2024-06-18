@@ -1,5 +1,5 @@
-<header class="w-full flex flex-col mb-[40px]">
-  <div class="max-w-[640px] h-[60px] container flex items-center justify-between shadow-under ">
+<header class="w-full flex flex-col mb-[40px] mx-auto max-w-[640px]">
+  <div class="w-full h-[60px] flex items-center justify-between">
     <app-logo></app-logo>
 
     <nav class="flex items-center space-x-2">
@@ -7,7 +7,8 @@
       <app-settings-button></app-settings-button>
     </nav>
   </div>
-  <div class="h-[3px] max-w-[640px] container">
-    <div class="bg-white h-full" [style.width]="(100 - ((time * 100) / baseTime)) + '%'"></div>
+  <div class="h-[1px] w-full bg-black bg-opacity-10">
+    <div class="bg-white h-[3px] rounded-sm translate-y-[-1px]" [style.width]="(100 - ((time * 100) / baseTime)) + '%'">
+    </div>
   </div>
 </header>
