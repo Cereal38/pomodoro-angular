@@ -41,7 +41,7 @@ export class TimerService {
         }
     }
 
-    isTimerRuuning(): boolean {
+    isTimerRunning(): boolean {
         return this._timer != null;
     }
 }
