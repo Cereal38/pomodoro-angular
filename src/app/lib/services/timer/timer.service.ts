@@ -23,7 +23,9 @@ export class TimerService {
         console.log('TOGGLE');
         if (!this._timer) {
             this._timer = setInterval(() => {
-                this._time.next(this._time.getValue() - 1);
+                if (this._time.getValue() != 0) {
+                    this._time.next(this._time.getValue() - 1);
+                }
             }, 1000);
         } else {
             clearInterval(this._timer);
