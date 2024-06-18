@@ -61,7 +61,8 @@ export class TimerService {
                 } else {
                     // Clear timer and change mode when reaching 0
                     this.setMode(this.shortBreakMode);
-                    this._time.next(this.shortBreakDuration);
+                    this.setTime(this.shortBreakDuration);
+                    this.setBaseTime(this.shortBreakDuration);
                     clearInterval(this._timer as ReturnType<typeof setInterval>);
                     this._timer = null;
                 }
