@@ -1,5 +1,9 @@
 # A reproduction of [Pomofocus](https://pomofocus.io/app) using Angular
 
+### Demo
+
+![](readme/demo.gif)
+
 ### Boilerplate
 
 https://github.com/jm2097/angular-boilerplate
