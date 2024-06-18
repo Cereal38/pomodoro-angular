@@ -1,22 +1,30 @@
-<div class="w-[480px] h-[313px] bg-[#C15C5C] rounded-md flex flex-col justify-between items-center pt-[20px] pb-[30px]">
-  <!-- Select menu -->
-  <div class="flex flex-row">
-    <button class="btn-tab {{ mode === focusMode && 'btn-tab-selected' }}"
-      (click)="handleModeChange(focusMode)">Focus</button>
-    <button class="btn-tab {{ mode === shortBreakMode && 'btn-tab-selected' }}"
-      (click)="handleModeChange(shortBreakMode)">Short
-      break</button>
-    <button class="btn-tab {{ mode === longBreakMode && 'btn-tab-selected' }}"
-      (click)="handleModeChange(longBreakMode)">Long
-      break</button>
+<div class="flex flex-col items-center">
+  <div
+    class="w-[480px] h-[313px] bg-[#C15C5C] rounded-md flex flex-col justify-between items-center pt-[20px] pb-[30px] mb-[20px]">
+    <!-- Select menu -->
+    <div class="flex flex-row">
+      <button class="btn-tab {{ mode === focusMode && 'btn-tab-selected' }}"
+        (click)="handleModeChange(focusMode)">Focus</button>
+      <button class="btn-tab {{ mode === shortBreakMode && 'btn-tab-selected' }}"
+        (click)="handleModeChange(shortBreakMode)">Short
+        break</button>
+      <button class="btn-tab {{ mode === longBreakMode && 'btn-tab-selected' }}"
+        (click)="handleModeChange(longBreakMode)">Long
+        break</button>
+    </div>
+
+    <p class="text-[120px] font-bold">{{formattedTime}}</p>
+
+    <button class="btn btn-main w-[200px] {{ isTimerRunning && 'btn-main-active' }} font-extrabold"
+      (click)="handleStart()">
+      {{
+      isTimerRunning
+      ? 'PAUSE' : 'START'
+      }}</button>
   </div>
 
-  <p class="text-[120px] font-bold">{{formattedTime}}</p>
-
-  <button class="btn btn-main w-[200px] {{ isTimerRunning && 'btn-main-active' }} font-extrabold"
-    (click)="handleStart()">
-    {{
-    isTimerRunning
-    ? 'PAUSE' : 'START'
-    }}</button>
+  <div class="flex flex-col items-center">
+    <span class="text-[16px] opacity-70">#1</span>
+    <span class="text-[18px]">Time to focus!</span>
+  </div>
 </div>
