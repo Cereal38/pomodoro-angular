@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { ThemeService } from '@lib/services';
+import { AppTheme, ThemeService } from '@lib/services/theme';
 import { TimerService } from '@lib/services/timer/timer.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'app-timer',
@@ -13,6 +14,9 @@ export class TimerComponent implements OnInit {
     public readonly focusMode: number = 0;
     public readonly shortBreakMode: number = 1;
     public readonly longBreakMode: number = 2;
+
+    currentTheme!: AppTheme | null;
+    private readonly _destroy$ = new Subject();
 
     mode!: number;
     time!: number; // In seconds
@@ -27,6 +31,10 @@ export class TimerComponent implements OnInit {
         this._timerService.time$.subscribe((t) => {
             this.time = t;
         });
+
+        this._themeService.currentTheme$
+            .pipe(takeUntil(this._destroy$))
+            .subscribe((theme) => (this.currentTheme = theme));
     }
 
     handleModeChange(mode: number): void {
@@ -64,5 +72,18 @@ export class TimerComponent implements OnInit {
 
     get isTimerRunning(): boolean {
         return this._timerService.isTimerRuuning();
+    }
+
+    get bgSecondaryClassName(): string {
+        switch (this.currentTheme) {
+            case 'focus':
+                return 'bg-secondary-focus';
+            case 'short-break':
+                return 'bg-secondary-short-break';
+            case 'long-break':
+                return 'bg-secondary-long-break';
+            default:
+                return '';
+        }
     }
 }

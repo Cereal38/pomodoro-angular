@@ -24,3 +24,15 @@ body.long-break {
 body.dark {
     @apply bg-[#BA4949];
 }
+
+.bg-secondary-focus {
+    @apply bg-[#C15C5C]
+}
+
+.bg-secondary-short-break {
+  @apply bg-[#4C9196]
+}
+
+.bg-secondary-long-break {
+  @apply bg-[#4D7FA2]
+}
