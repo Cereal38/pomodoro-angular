@@ -108,4 +108,30 @@ export class TimerService {
     isTimerRunning(): boolean {
         return this._timer != null;
     }
+
+    skipTimer(): void {
+        if (this._timer) {
+            clearInterval(this._timer);
+            this._timer = null;
+            if (this.getMode() == this.focusMode && this.getCycles() % 4 != 0) {
+                this.setMode(this.shortBreakMode);
+                this.setTime(this.shortBreakDuration);
+                this.setBaseTime(this.shortBreakDuration);
+            } else if (this.getMode() == this.focusMode && this.getCycles() % 4 == 0) {
+                this.setMode(this.longBreakMode);
+                this.setTime(this.longBreakDuration);
+                this.setBaseTime(this.longBreakDuration);
+            } else if (this.getMode() == this.shortBreakMode) {
+                this.setMode(this.focusMode);
+                this.setTime(this.focusDuration);
+                this.setBaseTime(this.focusDuration);
+                this.incrementCycles();
+            } else if (this.getMode() == this.longBreakMode) {
+                this.setMode(this.focusMode);
+                this.setTime(this.focusDuration);
+                this.setBaseTime(this.focusDuration);
+                this.incrementCycles();
+            }
+        }
+    }
 }
