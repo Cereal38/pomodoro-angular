@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { TimerService } from '@lib/services/timer/timer.service';
 
 @Component({
     selector: 'app-timer',
@@ -12,15 +13,20 @@ export class TimerComponent implements OnInit {
     public readonly shortBreakMode: number = 1;
     public readonly longBreakMode: number = 2;
 
-    private _timer: ReturnType<typeof setInterval> | null = null;
-
     mode!: number;
     time!: number; // In seconds
+
+    constructor(private _timerService: TimerService) {}
 
     // Init mode on mount
     ngOnInit(): void {
         this.mode = this.focusMode;
         this.time = 25 * 60;
+
+        // Subscribe to the timer service
+        this._timerService.time$.subscribe((t) => {
+            this.time = t;
+        });
     }
 
     handleModeChange(mode: number): void {
@@ -41,18 +47,10 @@ export class TimerComponent implements OnInit {
     }
 
     handleStart(): void {
-        if (!this._timer) {
-            this._timer = setInterval(() => {
-                console.log('HELLLO');
-                this.time--;
-            }, 1000);
-        } else {
-            clearInterval(this._timer);
-            this._timer = null;
-        }
+        this._timerService.toggleTimer();
     }
 
     get isTimerRunning(): boolean {
-        return this._timer !== null;
+        return this._timerService.isTimerRuuning();
     }
 }
